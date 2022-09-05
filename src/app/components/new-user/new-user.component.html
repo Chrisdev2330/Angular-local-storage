@@ -1,0 +1,39 @@
+<div class=" d-flex justify-content-center ">
+    <div class="card text-start w-50 mb-5  ">
+        <div class="card-body">
+            <div class="m-3" >
+                <h1 class="text-center bg-dark bg-gradient text-white border rounded ">Nuevo Usuario</h1>
+            </div>
+            <form action="" [formGroup] = "form"  (ngSubmit) = "AddUser(form.value)" >
+                <div class="form-group mb-3">
+                    <label class="label-control mb-1 ">Nombre:</label>
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" #nombre >
+                    <div *ngIf="f['nombre'].touched && f['nombre'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['nombre'].errors && f['nombre'].errors['required']">Nombre no puede estar vacio</div>
+             
+              
+                        <div *ngIf="f['nombre'].errors && f['nombre'].errors['minlength']">El campo debe contener un minimo de 4 letras</div>
+                    </div>
+                </div>
+    
+                <div class="form-group mb-3">
+                    <label class="label-control mb-1 ">Email:</label>
+                    <input type="text" class="form-control" formControlName = "email" placeholder="email" #email >
+                    <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['email'].errors && f['email'].errors['required']">email no puede estar vacio</div>
+             
+              
+                        <div *ngIf="f['email'].errors && f['email'].errors['email']">El campo no es un email</div>
+                    </div>
+                </div>
+    
+                <button type="submit" [disabled]="form.invalid" class="btn bg-gradient bg-success text-white mt-3 w-100">
+                    Guardar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class=" mt-4 text-end">
+    <a class="btn btn-primary" routerLink="" >Volver</a>
+</div>
